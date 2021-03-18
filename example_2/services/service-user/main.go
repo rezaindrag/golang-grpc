@@ -19,8 +19,7 @@ func init() {
 
 func main() {
 	srv := grpc.NewServer()
-	var userSrv UsersServer
-	model.RegisterUsersServer(srv, &userSrv)
+	model.RegisterUsersServer(srv, &UsersServer{})
 
 	log.Println("Starting RPC server at", config.ServiceUserPort)
 

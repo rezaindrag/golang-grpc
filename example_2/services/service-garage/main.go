@@ -19,8 +19,7 @@ func init() {
 
 func main() {
 	srv := grpc.NewServer()
-	var garageSrv GaragesServer
-	model.RegisterGaragesServer(srv, garageSrv)
+	model.RegisterGaragesServer(srv, &GaragesServer{})
 
 	log.Println("Starting RPC server at", config.ServiceGaragePort)
 
