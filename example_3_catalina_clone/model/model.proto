@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+option go_package = "github.com/rezaindrag/golang-grpc_server/example_3_catalina_clone/model";
+
+package model;
+
+import "google/protobuf/timestamp.proto";
+
+service CatalogService {
+  rpc GetByID(CatalogId) returns (Catalog);
+}
+
+message CatalogId {
+  string id = 1;
+}
+
+message Catalog {
+  string id = 1;
+  Provider provider = 2;
+  repeated Promo items = 3;
+  google.protobuf.Timestamp start_time = 4;
+  google.protobuf.Timestamp end_time = 5;
+  Image image = 6;
+  google.protobuf.Timestamp created_time = 7;
+  google.protobuf.Timestamp updated_time = 8;
+  Image cover = 9;
+}
+
+message Image {
+  string url = 1;
+  int32 height = 2;
+  int32 width = 3;
+  string mime = 6;
+  string caption = 5;
+}
+
+message Provider {
+  string id = 1;
+  string name = 2;
+}
+
+message Promo {
+  string id = 1;
+  string title = 2;
+}
